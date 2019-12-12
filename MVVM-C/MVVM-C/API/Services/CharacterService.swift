@@ -11,9 +11,7 @@ import RxSwift
 
 protocol CharacterServiceProtocol {
     
-    func getCharacter(with id: Int, completionHandler: ((CharactersResponse?) -> Void)?)
     func getCharacters(from page: Int, completionHandler: ((CharactersResponse?) -> Void)?)
-    func getCharacters(with ids: [Int], completionHandler: (([CharactersResponse]) -> Void)?)
     
 }
 
@@ -26,10 +24,6 @@ final class CharacterService: CharacterServiceProtocol {
     
     // MARK: - Requests
     
-    func getCharacter(with id: Int, completionHandler: ((CharactersResponse?) -> Void)?) {
-        
-    }
-    
     func getCharacters(from page: Int, completionHandler: ((CharactersResponse?) -> Void)?) {
         return apiClient.request(API.Character.getCharacters(from: page))
             .observeOn(MainScheduler.instance)
@@ -38,10 +32,6 @@ final class CharacterService: CharacterServiceProtocol {
             }) { error in
                 completionHandler?(nil)
             }.disposed(by: disposeBag)
-    }
-    
-    func getCharacters(with ids: [Int], completionHandler: (([CharactersResponse]) -> Void)?) {
-        
     }
     
 }

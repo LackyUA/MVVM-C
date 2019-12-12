@@ -40,7 +40,7 @@ protocol CharactersListViewModelType {
     // MARK: - Data source
     
     /// Property which return number of characters.
-    var numberOfItems: Int { get }
+    var numberOfCells: Int { get }
     
     /// Property which show posibility to load new characters.
     var shouldLoadMore: Bool { get }
@@ -77,24 +77,25 @@ final class CharactersListViewModel {
     
     // MARK: - Properties
     
-    private var isLoadingMore = false
-    private var service: CharacterServiceProtocol
-    private var info: CharacterInfo = CharacterInfo()
-    private var characters: [CharacterResponse] = [] {
+    var isLoadingMore = false
+    var service: CharacterServiceProtocol
+    var info: CharacterInfo = CharacterInfo()
+    
+    var characters: [CharacterResponse] = [] {
         didSet {
             viewDelegate?.reloadTableView()
         }
     }
     
-    private var page: Int = 0 {
+    var isLoading: Bool = false {
         didSet {
-            fetchCharacters(from: page)
+            viewDelegate?.updateLoadingStatus(isLoading)
         }
     }
     
-    private var isLoading: Bool = false {
+    var page: Int = 0 {
         didSet {
-            viewDelegate?.updateLoadingStatus(isLoading)
+            fetchCharacters(from: page)
         }
     }
     
@@ -124,7 +125,7 @@ extension CharactersListViewModel: CharactersListViewModelType {
     
     // MARK: - Data Source
     
-    var numberOfItems: Int {
+    var numberOfCells: Int {
         return characters.count
     }
     

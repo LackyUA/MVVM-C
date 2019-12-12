@@ -110,11 +110,11 @@ extension CharactersList: UITableViewDelegate {
 extension CharactersList: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.numberOfItems
+        viewModel.numberOfCells
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == viewModel.numberOfItems - 1, viewModel.shouldLoadMore {
+        if indexPath.row == viewModel.numberOfCells - 1, viewModel.shouldLoadMore {
             return tableView.dequeueReusableCell(withIdentifier: String(describing: LoadingCell.self), for: indexPath)
         }
         
@@ -126,7 +126,7 @@ extension CharactersList: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == viewModel.numberOfItems - 1 {
+        if indexPath.row == viewModel.numberOfCells - 1 {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.viewModel.loadMore()
             }
