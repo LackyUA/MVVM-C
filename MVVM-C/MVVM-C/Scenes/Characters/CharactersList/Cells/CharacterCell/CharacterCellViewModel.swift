@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol CharacterCellViewModelType {
+protocol CharacterCellViewModelType: CellViewModelProtocol {
     
     // MARK: - Data source
     

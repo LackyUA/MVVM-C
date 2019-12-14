@@ -1,15 +1,15 @@
 //
-//  CharactersList.swift
+//  EpisodesList.swift
 //  MVVM-C
 //
-//  Created by Dmytro Dobrovolskyy on 09.12.2019.
+//  Created by Dmytro Dobrovolskyy on 12.12.2019.
 //  Copyright © 2019 Dmytro Dobrovolskyy. All rights reserved.
 //
 
 import UIKit
 
-final class CharactersList: UIViewController {
-    
+final class EpisodesList: UIViewController {
+
     // MARK: - Properties
     
     var viewModel: ListViewModelType! {
@@ -40,8 +40,8 @@ final class CharactersList: UIViewController {
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         
         tableView.register(
-            CharacterCell.classForCoder(),
-            forCellReuseIdentifier: String(describing: CharacterCell.self)
+            EpisodeCell.classForCoder(),
+            forCellReuseIdentifier: String(describing: EpisodeCell.self)
         )
         tableView.register(
             LoadingCell.classForCoder(),
@@ -66,13 +66,11 @@ final class CharactersList: UIViewController {
         super.loadView()
         
         view.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9843137255, blue: 0.937254902, alpha: 1)
-        navigationItem.title = "Characters"
+        navigationItem.title = "Episodes"
         
         configureRefreshControl()
         viewModel.start()
     }
-    
-    // MARK: - Configuration
     
     func configureRefreshControl() {
         tableView.refreshControl = refreshControl
@@ -86,12 +84,12 @@ final class CharactersList: UIViewController {
     @objc private func reloadData() {
         viewModel.reloadData()
     }
-    
+
 }
 
 // MARK: - Table view delegate
 
-extension CharactersList: UITableViewDelegate {
+extension EpisodesList: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -107,7 +105,7 @@ extension CharactersList: UITableViewDelegate {
 
 // MARK: - Table view data source
 
-extension CharactersList: UITableViewDataSource {
+extension EpisodesList: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.numberOfCells
@@ -118,10 +116,10 @@ extension CharactersList: UITableViewDataSource {
             return tableView.dequeueReusableCell(withIdentifier: String(describing: LoadingCell.self), for: indexPath)
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CharacterCell.self), for: indexPath) as! CharacterCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EpisodeCell.self), for: indexPath) as! EpisodeCell
         
-        if let cellViewModel = viewModel.viewModelFor(row: indexPath.row) as? CharacterCellViewModel {
-            cell.configure(with: cellViewModel)
+        if let viewModel = viewModel.viewModelFor(row: indexPath.row) as? EpisodeCellViewModel {
+            cell.configure(with: viewModel)
         }
         
         return cell
@@ -139,7 +137,7 @@ extension CharactersList: UITableViewDataSource {
 
 // MARK: - View model delegate
 
-extension CharactersList: ListViewModelDelegate {
+extension EpisodesList: ListViewModelDelegate {
     
     func reloadTableView() {
         tableView.reloadData()

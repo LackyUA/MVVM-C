@@ -15,6 +15,7 @@ final class Session {
     let apiClient: APIClient
     
     let characterService: CharacterService
+    let episodeService: EpisodeService
     
     // MARK: - Initializers
     
@@ -22,6 +23,7 @@ final class Session {
         apiClient = APIClient()
         
         characterService = CharacterService()
+        episodeService = EpisodeService()
     }
     
 }

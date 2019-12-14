@@ -11,7 +11,7 @@ import Foundation
 final class MockCharacterService: CharacterServiceProtocol {
     
     private let mockCharactersResponse: CharactersResponse = CharactersResponse(
-        info: CharacterInfo(count: 1, pages: 1, next: "", prev: ""),
+        info: PaginationInfo(count: 1, pages: 1, next: "", prev: ""),
         characters: [
             CharacterResponse(
                 id: 1,

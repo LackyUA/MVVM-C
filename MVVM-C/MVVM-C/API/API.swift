@@ -43,6 +43,12 @@ extension API {
     
     enum Episode {
         
+        static func getEpisodes(from page: Int) -> Endpoint<EpisodesResponse> {
+            let query: [String: Any] = ["page": page]
+            
+            return Endpoint(method: .get, path: "/episode/", queryItems: query)
+        }
+        
     }
     
 }

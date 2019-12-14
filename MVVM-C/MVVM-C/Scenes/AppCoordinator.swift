@@ -41,7 +41,15 @@ final class AppCoordinator: Coordinator {
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
         
+        initEpisodesCoordinator()
         initCharacterCoordinator()
+    }
+    
+    private func initEpisodesCoordinator() {
+        let childCoordinator = EpisodesCoordinator(rootViewController: rootViewController, session: session)
+        
+        childCoordinator.start()
+        childCoordinators[childCoordinator.identifier] = childCoordinator
     }
     
     private func initCharacterCoordinator() {

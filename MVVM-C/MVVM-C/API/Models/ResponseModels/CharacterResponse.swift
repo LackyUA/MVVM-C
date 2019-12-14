@@ -10,8 +10,8 @@ import Foundation
 
 struct CharactersResponse: Codable {
     
-    var info: CharacterInfo
-    var characters: [CharacterResponse]
+    let info: PaginationInfo
+    let characters: [CharacterResponse]
     
     enum CodingKeys: String, CodingKey {
         
@@ -22,7 +22,7 @@ struct CharactersResponse: Codable {
     
 }
 
-struct CharacterInfo: Codable {
+struct PaginationInfo: Codable {
     
     var count: Int = 0
     var pages: Int = 0
@@ -31,27 +31,27 @@ struct CharacterInfo: Codable {
     
 }
 
-struct CharacterResponse: Codable {
+struct CharacterResponse: Codable, ListedModel {
     
-    var id: Int
-    var name: String
-    var status: String
-    var species: String
-    var type: String
-    var gender: String
-    var origin: CharacterLocation
-    var location: CharacterLocation
-    var image: String
-    var episode: [String]
-    var url: String
-    var created: String
+    let id: Int
+    let name: String
+    let status: String
+    let species: String
+    let type: String
+    let gender: String
+    let origin: CharacterLocation
+    let location: CharacterLocation
+    let image: String
+    let episode: [String]
+    let url: String
+    let created: String
     
 }
 
 struct CharacterLocation: Codable {
     
-    var name: String
-    var url: String
+    let name: String
+    let url: String
     
 }
 

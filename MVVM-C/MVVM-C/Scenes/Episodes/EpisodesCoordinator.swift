@@ -1,14 +1,14 @@
 //
-//  CharactersCoordinator.swift
+//  EpisodesCoordinator.swift
 //  MVVM-C
 //
-//  Created by Dmytro Dobrovolskyy on 09.12.2019.
+//  Created by Dmytro Dobrovolskyy on 12.12.2019.
 //  Copyright © 2019 Dmytro Dobrovolskyy. All rights reserved.
 //
 
 import UIKit
 
-final class CharactersCoordinator: NSObject, Coordinator {
+final class EpisodesCoordinator: NSObject, Coordinator {
     
     // MARK: - Properties
     
@@ -20,22 +20,20 @@ final class CharactersCoordinator: NSObject, Coordinator {
     let rootNavigationController: UINavigationController = {
         let navigationController = UINavigationController()
         
-        navigationController.tabBarItem = .init(title: "Characters", image: UIImage(named: "character"), tag: 1)
+        navigationController.tabBarItem = .init(title: "Episodes", image: UIImage(named: "episodes"), tag: 0)
         
         return navigationController
     }()
     
     // MARK: - View models
     
-    lazy var characterListViewModel: CharactersListViewModel = {
-        let viewModel = CharactersListViewModel(service: session.characterService)
+    lazy var episodesListViewModel: EpisodesListViewModel = {
+        let viewModel = EpisodesListViewModel(service: session.episodeService)
         
         viewModel.coordinatorDelegate = self
         
         return viewModel
     }()
-    
-    var characterDetailsViewModel: CharacterDetailsViewModel!
     
     // MARK: - Initializers
     
@@ -46,9 +44,9 @@ final class CharactersCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        let viewController = CharactersList()
+        let viewController = EpisodesList()
         
-        viewController.viewModel = characterListViewModel
+        viewController.viewModel = episodesListViewModel
         
         rootNavigationController.setViewControllers([viewController], animated: false)
         rootViewController.addChild(rootNavigationController)
@@ -62,13 +60,13 @@ final class CharactersCoordinator: NSObject, Coordinator {
 
 // MARK: - Navigation
 
-extension CharactersCoordinator {
+extension EpisodesCoordinator {
     
     func showDetails(forCharacter character: CharacterResponse) {
         let viewController = CharacterDetails()
         
-        characterDetailsViewModel = CharacterDetailsViewModel(character: character)
-        viewController.viewModel = characterDetailsViewModel
+//        characterDetailsViewModel = CharacterDetailsViewModel(character: character)
+//        viewController.viewModel = characterDetailsViewModel
         
         rootNavigationController.present(viewController, animated: true, completion: nil)
     }
@@ -77,12 +75,13 @@ extension CharactersCoordinator {
 
 // MARK: - Character list coordinato delegate
 
-extension CharactersCoordinator: ListCoordinatorDelegate {
+extension EpisodesCoordinator: ListCoordinatorDelegate {
     
     func didSelect<Model: ListedModel>(data: Model) {
-        if let character = data as? CharacterResponse {
-            showDetails(forCharacter: character)
+        if let episode = data as? EpisodeResponse {
+            print(episode.name)
         }
     }
     
 }
+
