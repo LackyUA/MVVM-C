@@ -40,15 +40,15 @@ final class EpisodeCellViewModel {
 extension EpisodeCellViewModel: EpisodeCellViewModelType {
     
     var name: String {
-        return episode.name
+        return episode.name.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
     var releaseDate: String {
-        return episode.releaseDate
+        return episode.releaseDate.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
     var abbreviation: String {
-        return episode.abbreviation
+        return episode.abbreviation.lowercased()
     }
     
 }

@@ -35,7 +35,7 @@ final class EpisodesListViewModel {
     
     var page: Int = 0 {
         didSet {
-            fetchCharacters(from: page)
+            fetchEpisodes(from: page)
         }
     }
     
@@ -47,7 +47,7 @@ final class EpisodesListViewModel {
     
     // MARK: - Network
     
-    private func fetchCharacters(from page: Int) {
+    private func fetchEpisodes(from page: Int) {
         service.getEpisodes(from: page) { [weak self] response in
             self?.isLoading = false
             self?.isLoadingMore = false
