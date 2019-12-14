@@ -58,22 +58,7 @@ final class EpisodesCoordinator: NSObject, Coordinator {
     
 }
 
-// MARK: - Navigation
-
-extension EpisodesCoordinator {
-    
-    func showDetails(forCharacter character: CharacterResponse) {
-        let viewController = CharacterDetails()
-        
-//        characterDetailsViewModel = CharacterDetailsViewModel(character: character)
-//        viewController.viewModel = characterDetailsViewModel
-        
-        rootNavigationController.present(viewController, animated: true, completion: nil)
-    }
-    
-}
-
-// MARK: - Character list coordinato delegate
+// MARK: - Episode list coordinato delegate
 
 extension EpisodesCoordinator: ListCoordinatorDelegate {
     
