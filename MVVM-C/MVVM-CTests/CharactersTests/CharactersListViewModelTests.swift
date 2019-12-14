@@ -43,7 +43,7 @@ class CharactersListViewModelTests: XCTestCase {
         charactersViewModel.page = 1
         mockCharacterService.getCharactersFetchSuccess()
         
-        let characterCellViewModel = charactersViewModel.viewModelFor(row: 0)
+        let characterCellViewModel = charactersViewModel.viewModelFor(row: 0) as! CharacterCellViewModel
         
         XCTAssertEqual(characterCellViewModel.name, "Rick Sanchez", "Wrong character view model initializing.")
         XCTAssertEqual(characterCellViewModel.characterStatus, .alive, "Wrong character view model initializing.")
