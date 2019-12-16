@@ -18,7 +18,7 @@ final class EpisodeCellStackView: UIStackView {
         spacing = 8
         axis = .vertical
         alignment = .fill
-        distribution = .fill
+        distribution = .fillProportionally
     }
     
     required init(coder: NSCoder) {

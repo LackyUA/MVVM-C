@@ -1,14 +1,14 @@
 //
-//  CharactersListViewModel.swift
+//  LocationsListViewModel.swift
 //  MVVM-C
 //
-//  Created by Dmytro Dobrovolskyy on 10.12.2019.
+//  Created by Dmytro Dobrovolskyy on 16.12.2019.
 //  Copyright © 2019 Dmytro Dobrovolskyy. All rights reserved.
 //
 
 import Foundation
 
-final class CharactersListViewModel {
+final class LocationsListViewModel {
     
     // MARK: - Weak properties
     
@@ -18,10 +18,10 @@ final class CharactersListViewModel {
     // MARK: - Properties
     
     var isLoadingMore = false
-    var service: CharacterServiceProtocol
+    var service: LocationServiceProtocol
     var info: PaginationInfo = PaginationInfo()
     
-    var characters: [CharacterResponse] = [] {
+    var locations: [LocationResponse] = [] {
         didSet {
             viewDelegate?.reloadTableView()
         }
@@ -35,25 +35,25 @@ final class CharactersListViewModel {
     
     var page: Int = 0 {
         didSet {
-            fetchCharacters(from: page)
+            fetchLocations(from: page)
         }
     }
     
-    // MARK: - Init
+    // MARK: - Inits
     
-    init(service: CharacterServiceProtocol) {
+    init(service: LocationService) {
         self.service = service
     }
     
-    // MARK: - Network
+    // MARK: - Networking
     
-    private func fetchCharacters(from page: Int) {
-        service.getCharacters(from: page) { [weak self] response in
+    private func fetchLocations(from page: Int) {
+        service.getLocations(from: page) { [weak self] response in
             self?.isLoading = false
             self?.isLoadingMore = false
             
             if let response = response {
-                self?.characters += response.characters
+                self?.locations += response.locations
                 self?.info = response.info
             }
         }
@@ -61,20 +61,20 @@ final class CharactersListViewModel {
     
 }
 
-extension CharactersListViewModel: ListViewModelType {
+extension LocationsListViewModel: ListViewModelType {
     
-    // MARK: - Data Source
+    // MARK: - Data source
     
     var numberOfCells: Int {
-        return characters.count
+        return locations.count
     }
     
     var shouldLoadMore: Bool {
         return page != info.pages
     }
     
-    func viewModelFor(row: Int) -> CharactersListViewModel.CellViewModel {
-        return CharacterCellViewModel(character: characters[row])
+    func viewModelFor(row: Int) -> LocationsListViewModel.CellViewModel {
+        return LocationCellViewModel(location: locations[row])
     }
     
     // MARK: - Events
@@ -84,12 +84,12 @@ extension CharactersListViewModel: ListViewModelType {
     }
     
     func didSelect(row: Int) {
-        coordinatorDelegate?.didSelect(data: characters[row])
+        coordinatorDelegate?.didSelect(data: locations[row])
     }
     
     func reloadData() {
         isLoading = true
-        characters.removeAll()
+        locations.removeAll()
         start()
     }
     

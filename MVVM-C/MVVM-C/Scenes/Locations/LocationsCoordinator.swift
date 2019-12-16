@@ -27,6 +27,14 @@ final class LocationsCoordinator: NSObject, Coordinator {
     
     // MARK: - View models
     
+    lazy var locationsListViewModel: LocationsListViewModel = {
+        let viewModel = LocationsListViewModel(service: session.locationService)
+        
+        viewModel.coordinatorDelegate = self
+        
+        return viewModel
+    }()
+    
     // MARK: - Inits
     
     init(rootViewController: UITabBarController, session: Session) {
@@ -36,7 +44,9 @@ final class LocationsCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        let viewController = UIViewController()
+        let viewController = LocationsList()
+        
+        viewController.viewModel = locationsListViewModel
         
         rootNavigationController.setViewControllers([viewController], animated: false)
         rootViewController.addChild(rootNavigationController)
@@ -44,6 +54,18 @@ final class LocationsCoordinator: NSObject, Coordinator {
     
     private func childDidDisappeared(_ child: Coordinator?) {
         childCoordinators.removeValue(forKey: (child?.identifier)!)
+    }
+    
+}
+
+// MARK: - List coordinator delegate.
+
+extension LocationsCoordinator: ListCoordinatorDelegate {
+    
+    func didSelect<Model: ListedModel>(data: Model) {
+        if let location = data as? LocationResponse {
+            print(location.name)
+        }
     }
     
 }

@@ -94,12 +94,9 @@ extension EpisodesListViewModel: ListViewModelType {
     }
     
     func loadMore() {
-        if !isLoadingMore {
+        if !isLoadingMore, page < info.pages {
             isLoadingMore = true
-            
-            if page < info.pages {
-                page += 1
-            }
+            page += 1
         }
     }
     

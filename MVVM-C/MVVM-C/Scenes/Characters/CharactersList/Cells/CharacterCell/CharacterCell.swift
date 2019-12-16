@@ -29,6 +29,7 @@ final class CharacterCell: UITableViewCell {
         
         label.textColor = #colorLiteral(red: 0.3137254902, green: 0.2392156863, blue: 0.2588235294, alpha: 1)
         label.numberOfLines = 2
+        label.font = .systemFont(ofSize: 17, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(label)

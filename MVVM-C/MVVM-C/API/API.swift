@@ -33,6 +33,12 @@ extension API {
     
     enum Location {
         
+        static func getLocations(from page: Int) -> Endpoint<LocationsResponse> {
+            let query: [String: Any] = ["page": page]
+            
+            return Endpoint(method: .get, path: "/location/", queryItems: query)
+        }
+        
     }
     
 }

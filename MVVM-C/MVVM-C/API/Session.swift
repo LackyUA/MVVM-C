@@ -16,6 +16,7 @@ final class Session {
     
     let characterService: CharacterService
     let episodeService: EpisodeService
+    let locationService: LocationService
     
     // MARK: - Initializers
     
@@ -24,6 +25,7 @@ final class Session {
         
         characterService = CharacterService()
         episodeService = EpisodeService()
+        locationService = LocationService()
     }
     
 }

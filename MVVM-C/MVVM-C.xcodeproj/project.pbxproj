@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		6DD5BEFACDE69630BD03224D /* Pods_MVVM_C.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12946DFB7DA065E2FD4B5FC5 /* Pods_MVVM_C.framework */; };
 		7E29204323A77DC200D59793 /* LocationsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29204223A77DC200D59793 /* LocationsCoordinator.swift */; };
+		7E29204523A7870C00D59793 /* LocationsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29204423A7870C00D59793 /* LocationsList.swift */; };
+		7E29204723A7871C00D59793 /* LocationsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29204623A7871C00D59793 /* LocationsListViewModel.swift */; };
+		7E29204A23A78B5C00D59793 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29204923A78B5C00D59793 /* LocationService.swift */; };
+		7E29204C23A790EE00D59793 /* LocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29204B23A790EE00D59793 /* LocationResponse.swift */; };
+		7E29204E23A7931700D59793 /* LocationCellModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29204D23A7931700D59793 /* LocationCellModelView.swift */; };
+		7E29205023A797C700D59793 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29204F23A797C700D59793 /* LocationCell.swift */; };
 		7E2CBD7823A1359300596D1B /* String+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CBD7723A1359300596D1B /* String+Regex.swift */; };
 		7E2CBD7A23A140C100596D1B /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CBD7923A140C100596D1B /* LoadingCell.swift */; };
 		7E2CBD7D23A148FB00596D1B /* CharacterDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CBD7C23A148FB00596D1B /* CharacterDetailsCell.swift */; };
@@ -72,6 +78,12 @@
 		2B9872ED708E374B4A4765A6 /* Pods-MVVM-C.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-C.release.xcconfig"; path = "Target Support Files/Pods-MVVM-C/Pods-MVVM-C.release.xcconfig"; sourceTree = "<group>"; };
 		6BC3561FEA8A36BB6FA1D1C4 /* Pods-MVVM-CTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-CTests.release.xcconfig"; path = "Target Support Files/Pods-MVVM-CTests/Pods-MVVM-CTests.release.xcconfig"; sourceTree = "<group>"; };
 		7E29204223A77DC200D59793 /* LocationsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsCoordinator.swift; sourceTree = "<group>"; };
+		7E29204423A7870C00D59793 /* LocationsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsList.swift; sourceTree = "<group>"; };
+		7E29204623A7871C00D59793 /* LocationsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsListViewModel.swift; sourceTree = "<group>"; };
+		7E29204923A78B5C00D59793 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		7E29204B23A790EE00D59793 /* LocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationResponse.swift; sourceTree = "<group>"; };
+		7E29204D23A7931700D59793 /* LocationCellModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCellModelView.swift; sourceTree = "<group>"; };
+		7E29204F23A797C700D59793 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		7E2CBD7723A1359300596D1B /* String+Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Regex.swift"; sourceTree = "<group>"; };
 		7E2CBD7923A140C100596D1B /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		7E2CBD7C23A148FB00596D1B /* CharacterDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsCell.swift; sourceTree = "<group>"; };
@@ -144,6 +156,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E29204823A7873500D59793 /* LocationCell */ = {
+			isa = PBXGroup;
+			children = (
+				7E29204F23A797C700D59793 /* LocationCell.swift */,
+				7E29204D23A7931700D59793 /* LocationCellModelView.swift */,
+			);
+			path = LocationCell;
+			sourceTree = "<group>";
+		};
 		7E2CBD7623A1357800596D1B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,8 +268,8 @@
 		7EAAFB3223A4F1D300AE637A /* Locations */ = {
 			isa = PBXGroup;
 			children = (
-				7EAAFB3323A4F1E700AE637A /* LocationsList */,
 				7E29204223A77DC200D59793 /* LocationsCoordinator.swift */,
+				7EAAFB3323A4F1E700AE637A /* LocationsList */,
 			);
 			path = Locations;
 			sourceTree = "<group>";
@@ -256,6 +277,9 @@
 		7EAAFB3323A4F1E700AE637A /* LocationsList */ = {
 			isa = PBXGroup;
 			children = (
+				7E29204423A7870C00D59793 /* LocationsList.swift */,
+				7E29204623A7871C00D59793 /* LocationsListViewModel.swift */,
+				7E29204823A7873500D59793 /* LocationCell */,
 			);
 			path = LocationsList;
 			sourceTree = "<group>";
@@ -378,6 +402,7 @@
 			children = (
 				7ED3F1A4239EA19400ABA5C3 /* CharacterService.swift */,
 				7E4E2DB923A2942400B87DD2 /* EpisodeService.swift */,
+				7E29204923A78B5C00D59793 /* LocationService.swift */,
 				7E4E2DAE23A266C700B87DD2 /* MockServices */,
 			);
 			path = Services;
@@ -396,6 +421,7 @@
 			children = (
 				7ED3F1A7239EA40900ABA5C3 /* CharacterResponse.swift */,
 				7E4E2DB723A291D900B87DD2 /* EpisodeResponse.swift */,
+				7E29204B23A790EE00D59793 /* LocationResponse.swift */,
 			);
 			path = ResponseModels;
 			sourceTree = "<group>";
@@ -625,6 +651,8 @@
 				7EAAFB2923A4C7FF00AE637A /* ListViewModelType.swift in Sources */,
 				7ED3F190239E8C3C00ABA5C3 /* Session.swift in Sources */,
 				7ED3F199239E918300ABA5C3 /* Endpoint.swift in Sources */,
+				7E29204A23A78B5C00D59793 /* LocationService.swift in Sources */,
+				7E29205023A797C700D59793 /* LocationCell.swift in Sources */,
 				7ED3F194239E8F7E00ABA5C3 /* APIClient.swift in Sources */,
 				7E4E2DA023A22F9800B87DD2 /* DetailStackView.swift in Sources */,
 				7EAAFB3123A4E4B700AE637A /* EpisodeCellStackView.swift in Sources */,
@@ -632,6 +660,7 @@
 				7ED3F189239E874F00ABA5C3 /* Coordinator.swift in Sources */,
 				7E4E2DBA23A2942400B87DD2 /* EpisodeService.swift in Sources */,
 				7E2CBD7F23A14FBF00596D1B /* CharacterDetailsViewModel.swift in Sources */,
+				7E29204523A7870C00D59793 /* LocationsList.swift in Sources */,
 				7E2CBD7D23A148FB00596D1B /* CharacterDetailsCell.swift in Sources */,
 				7E4E2DBC23A2954800B87DD2 /* EpisodesList.swift in Sources */,
 				7E2CBD7823A1359300596D1B /* String+Regex.swift in Sources */,
@@ -646,6 +675,9 @@
 				7ED3F1A8239EA40900ABA5C3 /* CharacterResponse.swift in Sources */,
 				7ED3F197239E8FFD00ABA5C3 /* Config.swift in Sources */,
 				7EAAFB2B23A4D94300AE637A /* EpisodeCellViewModel.swift in Sources */,
+				7E29204723A7871C00D59793 /* LocationsListViewModel.swift in Sources */,
+				7E29204E23A7931700D59793 /* LocationCellModelView.swift in Sources */,
+				7E29204C23A790EE00D59793 /* LocationResponse.swift in Sources */,
 				7EAAFB2D23A4DE0300AE637A /* EpisodeCell.swift in Sources */,
 				7ED3F192239E8E7C00ABA5C3 /* API.swift in Sources */,
 				7E4E2DA423A2476E00B87DD2 /* CharacterCellViewModel.swift in Sources */,
