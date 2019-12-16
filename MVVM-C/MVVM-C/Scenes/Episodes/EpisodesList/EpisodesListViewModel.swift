@@ -104,4 +104,3 @@ extension EpisodesListViewModel: ListViewModelType {
     }
     
 }
-

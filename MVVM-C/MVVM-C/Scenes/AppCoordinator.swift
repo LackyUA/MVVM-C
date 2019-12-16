@@ -43,6 +43,9 @@ final class AppCoordinator: Coordinator {
         
         initEpisodesCoordinator()
         initCharacterCoordinator()
+        initLocationsCoordinator()
+        
+        rootViewController.selectedIndex = 1
     }
     
     private func initEpisodesCoordinator() {
@@ -54,6 +57,13 @@ final class AppCoordinator: Coordinator {
     
     private func initCharacterCoordinator() {
         let childCoordinator = CharactersCoordinator(rootViewController: rootViewController, session: session)
+        
+        childCoordinator.start()
+        childCoordinators[childCoordinator.identifier] = childCoordinator
+    }
+    
+    private func initLocationsCoordinator() {
+        let childCoordinator = LocationsCoordinator(rootViewController: rootViewController, session: session)
         
         childCoordinator.start()
         childCoordinators[childCoordinator.identifier] = childCoordinator

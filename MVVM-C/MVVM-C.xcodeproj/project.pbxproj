@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6DD5BEFACDE69630BD03224D /* Pods_MVVM_C.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12946DFB7DA065E2FD4B5FC5 /* Pods_MVVM_C.framework */; };
+		7E29204323A77DC200D59793 /* LocationsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29204223A77DC200D59793 /* LocationsCoordinator.swift */; };
 		7E2CBD7823A1359300596D1B /* String+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CBD7723A1359300596D1B /* String+Regex.swift */; };
 		7E2CBD7A23A140C100596D1B /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CBD7923A140C100596D1B /* LoadingCell.swift */; };
 		7E2CBD7D23A148FB00596D1B /* CharacterDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CBD7C23A148FB00596D1B /* CharacterDetailsCell.swift */; };
@@ -70,6 +71,7 @@
 		27C78D21E6FEF2C85E67136E /* Pods-MVVM-CTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-CTests.debug.xcconfig"; path = "Target Support Files/Pods-MVVM-CTests/Pods-MVVM-CTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2B9872ED708E374B4A4765A6 /* Pods-MVVM-C.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-C.release.xcconfig"; path = "Target Support Files/Pods-MVVM-C/Pods-MVVM-C.release.xcconfig"; sourceTree = "<group>"; };
 		6BC3561FEA8A36BB6FA1D1C4 /* Pods-MVVM-CTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-CTests.release.xcconfig"; path = "Target Support Files/Pods-MVVM-CTests/Pods-MVVM-CTests.release.xcconfig"; sourceTree = "<group>"; };
+		7E29204223A77DC200D59793 /* LocationsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsCoordinator.swift; sourceTree = "<group>"; };
 		7E2CBD7723A1359300596D1B /* String+Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Regex.swift"; sourceTree = "<group>"; };
 		7E2CBD7923A140C100596D1B /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		7E2CBD7C23A148FB00596D1B /* CharacterDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsCell.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				7EAAFB3323A4F1E700AE637A /* LocationsList */,
+				7E29204223A77DC200D59793 /* LocationsCoordinator.swift */,
 			);
 			path = Locations;
 			sourceTree = "<group>";
@@ -650,6 +653,7 @@
 				7ED3F1A5239EA19400ABA5C3 /* CharacterService.swift in Sources */,
 				7ED3F1AF239EAA7600ABA5C3 /* CharactersList.swift in Sources */,
 				7E2CBD7A23A140C100596D1B /* LoadingCell.swift in Sources */,
+				7E29204323A77DC200D59793 /* LocationsCoordinator.swift in Sources */,
 				7EAAFB3523A4F33300AE637A /* MockEpisodeService.swift in Sources */,
 				7E4E2DA223A23C7800B87DD2 /* UIImageView+KF.swift in Sources */,
 				7ED3F168239E834500ABA5C3 /* SceneDelegate.swift in Sources */,

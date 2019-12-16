@@ -1,14 +1,14 @@
 //
-//  EpisodesCoordinator.swift
+//  LocationsCoordinator.swift
 //  MVVM-C
 //
-//  Created by Dmytro Dobrovolskyy on 12.12.2019.
+//  Created by Dmytro Dobrovolskyy on 16.12.2019.
 //  Copyright © 2019 Dmytro Dobrovolskyy. All rights reserved.
 //
 
 import UIKit
 
-final class EpisodesCoordinator: NSObject, Coordinator {
+final class LocationsCoordinator: NSObject, Coordinator {
     
     // MARK: - Properties
     
@@ -20,22 +20,14 @@ final class EpisodesCoordinator: NSObject, Coordinator {
     let rootNavigationController: UINavigationController = {
         let navigationController = UINavigationController()
         
-        navigationController.tabBarItem = .init(title: "Episodes", image: UIImage(named: "episodes"), tag: 0)
+        navigationController.tabBarItem = .init(title: "Locations", image: #imageLiteral(resourceName: "locations"), tag: 2)
         
         return navigationController
     }()
     
     // MARK: - View models
     
-    lazy var episodesListViewModel: EpisodesListViewModel = {
-        let viewModel = EpisodesListViewModel(service: session.episodeService)
-        
-        viewModel.coordinatorDelegate = self
-        
-        return viewModel
-    }()
-    
-    // MARK: - Initializers
+    // MARK: - Inits
     
     init(rootViewController: UITabBarController, session: Session) {
         self.session = session
@@ -44,9 +36,7 @@ final class EpisodesCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        let viewController = EpisodesList()
-        
-        viewController.viewModel = episodesListViewModel
+        let viewController = UIViewController()
         
         rootNavigationController.setViewControllers([viewController], animated: false)
         rootViewController.addChild(rootNavigationController)
@@ -54,18 +44,6 @@ final class EpisodesCoordinator: NSObject, Coordinator {
     
     private func childDidDisappeared(_ child: Coordinator?) {
         childCoordinators.removeValue(forKey: (child?.identifier)!)
-    }
-    
-}
-
-// MARK: - Episode list coordinator delegate
-
-extension EpisodesCoordinator: ListCoordinatorDelegate {
-    
-    func didSelect<Model: ListedModel>(data: Model) {
-        if let episode = data as? EpisodeResponse {
-            print(episode.name)
-        }
     }
     
 }

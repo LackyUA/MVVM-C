@@ -75,7 +75,7 @@ extension CharactersCoordinator {
     
 }
 
-// MARK: - Character list coordinato delegate
+// MARK: - Character list coordinator delegate
 
 extension CharactersCoordinator: ListCoordinatorDelegate {
     
