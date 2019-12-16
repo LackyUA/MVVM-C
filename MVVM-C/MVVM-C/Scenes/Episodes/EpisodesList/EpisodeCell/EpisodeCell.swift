@@ -71,8 +71,6 @@ final class EpisodeCell: UITableViewCell {
         backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9843137255, blue: 0.937254902, alpha: 1)
         
         clipsToBounds = true
-        selectedBackgroundView = UIView()
-        selectedBackgroundView?.backgroundColor = #colorLiteral(red: 0.4549019608, green: 0.5450980392, blue: 0.4588235294, alpha: 1)
     }
     
     func configure(with viewModel: EpisodeCellViewModelType) {

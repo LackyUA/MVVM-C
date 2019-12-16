@@ -26,4 +26,9 @@ protocol Coordinator: AnyObject {
     /// Method for initialize coordinator`s view.
     func start()
     
+    /// Method for deinit child coordinator.
+    ///
+    /// - Parameter child: Child coordinator which should be deinited.
+    func childDidDisappeared(_ child: Coordinator?)
+    
 }

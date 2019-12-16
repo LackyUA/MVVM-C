@@ -31,15 +31,15 @@ final class MockCharacterService: CharacterServiceProtocol {
     )
     
     var isGetCharactersCalled = false
-    var completionHandler: ((CharactersResponse?) -> Void)?
+    var completionHandler: ((RequestResult<CharactersResponse>) -> Void)?
     
-    func getCharacters(from page: Int, completionHandler: ((CharactersResponse?) -> Void)?) {
+    func getCharacters(from page: Int, completionHandler: ((RequestResult<CharactersResponse>) -> Void)?) {
         isGetCharactersCalled = true
         self.completionHandler = completionHandler
     }
     
     func getCharactersFetchSuccess() {
-        completionHandler?(mockCharactersResponse)
+        completionHandler?(.success(mockCharactersResponse))
     }
     
 }

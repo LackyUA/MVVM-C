@@ -15,6 +15,8 @@
 		7E29204C23A790EE00D59793 /* LocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29204B23A790EE00D59793 /* LocationResponse.swift */; };
 		7E29204E23A7931700D59793 /* LocationCellModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29204D23A7931700D59793 /* LocationCellModelView.swift */; };
 		7E29205023A797C700D59793 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29204F23A797C700D59793 /* LocationCell.swift */; };
+		7E29205323A7AC2500D59793 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29205223A7AC2500D59793 /* AlertService.swift */; };
+		7E29205523A7AF8100D59793 /* NoInternetConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29205423A7AF8100D59793 /* NoInternetConnectionView.swift */; };
 		7E2CBD7823A1359300596D1B /* String+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CBD7723A1359300596D1B /* String+Regex.swift */; };
 		7E2CBD7A23A140C100596D1B /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CBD7923A140C100596D1B /* LoadingCell.swift */; };
 		7E2CBD7D23A148FB00596D1B /* CharacterDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CBD7C23A148FB00596D1B /* CharacterDetailsCell.swift */; };
@@ -84,6 +86,8 @@
 		7E29204B23A790EE00D59793 /* LocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationResponse.swift; sourceTree = "<group>"; };
 		7E29204D23A7931700D59793 /* LocationCellModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCellModelView.swift; sourceTree = "<group>"; };
 		7E29204F23A797C700D59793 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
+		7E29205223A7AC2500D59793 /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
+		7E29205423A7AF8100D59793 /* NoInternetConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetConnectionView.swift; sourceTree = "<group>"; };
 		7E2CBD7723A1359300596D1B /* String+Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Regex.swift"; sourceTree = "<group>"; };
 		7E2CBD7923A140C100596D1B /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		7E2CBD7C23A148FB00596D1B /* CharacterDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsCell.swift; sourceTree = "<group>"; };
@@ -163,6 +167,15 @@
 				7E29204D23A7931700D59793 /* LocationCellModelView.swift */,
 			);
 			path = LocationCell;
+			sourceTree = "<group>";
+		};
+		7E29205123A7AC0E00D59793 /* AlertService */ = {
+			isa = PBXGroup;
+			children = (
+				7E29205223A7AC2500D59793 /* AlertService.swift */,
+				7E29205423A7AF8100D59793 /* NoInternetConnectionView.swift */,
+			);
+			path = AlertService;
 			sourceTree = "<group>";
 		};
 		7E2CBD7623A1357800596D1B /* Extensions */ = {
@@ -432,6 +445,7 @@
 				7ED3F170239E834800ABA5C3 /* LaunchScreen.storyboard */,
 				7ED3F1A9239EA8AB00ABA5C3 /* AppCoordinator.swift */,
 				7EAAFB2823A4C7FF00AE637A /* ListViewModelType.swift */,
+				7E29205123A7AC0E00D59793 /* AlertService */,
 				7ED3F1AC239EAA4800ABA5C3 /* Characters */,
 				7EAAFB3223A4F1D300AE637A /* Locations */,
 				7E4E2DB523A2900700B87DD2 /* Episodes */,
@@ -672,6 +686,7 @@
 				7E4E2DBE23A295DA00B87DD2 /* EpisodesListViewModel.swift in Sources */,
 				7E4E2DB823A291D900B87DD2 /* EpisodeResponse.swift in Sources */,
 				7E4E2DC023A29FB600B87DD2 /* EpisodesCoordinator.swift in Sources */,
+				7E29205523A7AF8100D59793 /* NoInternetConnectionView.swift in Sources */,
 				7ED3F1A8239EA40900ABA5C3 /* CharacterResponse.swift in Sources */,
 				7ED3F197239E8FFD00ABA5C3 /* Config.swift in Sources */,
 				7EAAFB2B23A4D94300AE637A /* EpisodeCellViewModel.swift in Sources */,
@@ -680,6 +695,7 @@
 				7E29204C23A790EE00D59793 /* LocationResponse.swift in Sources */,
 				7EAAFB2D23A4DE0300AE637A /* EpisodeCell.swift in Sources */,
 				7ED3F192239E8E7C00ABA5C3 /* API.swift in Sources */,
+				7E29205323A7AC2500D59793 /* AlertService.swift in Sources */,
 				7E4E2DA423A2476E00B87DD2 /* CharacterCellViewModel.swift in Sources */,
 				7ED3F1AA239EA8AB00ABA5C3 /* AppCoordinator.swift in Sources */,
 				7ED3F1A5239EA19400ABA5C3 /* CharacterService.swift in Sources */,

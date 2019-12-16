@@ -11,7 +11,7 @@ import RxSwift
 
 protocol CharacterServiceProtocol {
     
-    func getCharacters(from page: Int, completionHandler: ((CharactersResponse?) -> Void)?)
+    func getCharacters(from page: Int, completionHandler: ((RequestResult<CharactersResponse>) -> Void)?)
     
 }
 
@@ -24,13 +24,17 @@ final class CharacterService: CharacterServiceProtocol {
     
     // MARK: - Requests
     
-    func getCharacters(from page: Int, completionHandler: ((CharactersResponse?) -> Void)?) {
+    func getCharacters(from page: Int, completionHandler: ((RequestResult<CharactersResponse>) -> Void)?) {
         return apiClient.request(API.Character.getCharacters(from: page))
             .observeOn(MainScheduler.instance)
             .subscribe(onSuccess: { response in
-                completionHandler?(response)
+                completionHandler?(.success(response))
             }) { error in
-                completionHandler?(nil)
+                if let _ = error as? NoInternetError {
+                    completionHandler?(.noInternet)
+                } else {
+                    completionHandler?(.error)
+                }
             }.disposed(by: disposeBag)
     }
     

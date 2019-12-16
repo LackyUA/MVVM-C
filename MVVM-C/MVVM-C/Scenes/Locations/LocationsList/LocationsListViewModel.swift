@@ -48,13 +48,22 @@ final class LocationsListViewModel {
     // MARK: - Networking
     
     private func fetchLocations(from page: Int) {
-        service.getLocations(from: page) { [weak self] response in
+        service.getLocations(from: page) { [weak self] result in
             self?.isLoading = false
             self?.isLoadingMore = false
             
-            if let response = response {
-                self?.locations += response.locations
-                self?.info = response.info
+            switch result {
+            case .success(let response):
+                if let response = response {
+                    self?.locations += response.locations
+                    self?.info = response.info
+                }
+                
+            case .noInternet:
+                break
+                
+            case .error:
+                AppCoordinator.instance.showErroAlert(with: "Please try again later.")
             }
         }
     }

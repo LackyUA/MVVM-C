@@ -25,3 +25,16 @@ class RequestError: Error {
 
 /// API request error type which notifies about internet connection error.
 final class NoInternetError: RequestError {}
+
+enum RequestResult<T> {
+    case success(T?)
+    case noInternet
+    case error
+    
+    static func getRequestStatus(code: Int) -> RequestResult {
+        switch code {
+        case 200...300: return .success(nil)
+        default: return .error
+        }
+    }
+}

@@ -55,6 +55,15 @@ final class APIClient {
     /// Method for handling errors during networking requests and decode response.
     func request<Response>(_ endpoint: Endpoint<Response>) -> Single<Response> {
         return Single<Response>.create { [unowned self] observer in
+            if !self.isInternetAvailable {
+                let noInternetError = NoInternetError()
+                ErrorHandler().handle(noInternetError)
+                
+                observer(.error(noInternetError))
+                
+                return Disposables.create()
+            }
+            
             var url = self.url(path: endpoint.path)
             
             if let queryParams = endpoint.queryItems {

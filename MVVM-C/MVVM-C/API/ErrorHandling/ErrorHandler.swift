@@ -68,10 +68,13 @@ final class ErrorHandler {
     /// - Parameter description: Request error description.
     func handle(_ error: Error, description: String? = nil) {
         if error is NoInternetError {
-            // Show internet connection problem alert.
+            DispatchQueue.main.async {
+                AppCoordinator.instance.showInternetConnectionAlert()
+            }
         } else if let description = description {
-            print(description)
-            // Show description alert.
+            DispatchQueue.main.async {
+                AppCoordinator.instance.showErroAlert(with: description)
+            }
         }
         
         if let requestError = error as? RequestError {

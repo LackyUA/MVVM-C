@@ -54,7 +54,7 @@ final class CharactersCoordinator: NSObject, Coordinator {
         rootViewController.addChild(rootNavigationController)
     }
     
-    private func childDidDisappeared(_ child: Coordinator?) {
+    func childDidDisappeared(_ child: Coordinator?) {
         childCoordinators.removeValue(forKey: (child?.identifier)!)
     }
     

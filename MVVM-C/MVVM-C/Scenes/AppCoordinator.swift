@@ -16,6 +16,8 @@ final class AppCoordinator: Coordinator {
     
     // MARK: - Properties
     
+    static var instance: AppCoordinator!
+    
     var session: Session
     var identifier: UUID
     var childCoordinators: [UUID : Coordinator]
@@ -35,6 +37,8 @@ final class AppCoordinator: Coordinator {
         identifier = UUID()
         window = sceneWindow
         childCoordinators = [:]
+        
+        AppCoordinator.instance = self
     }
     
     func start() {
@@ -47,6 +51,8 @@ final class AppCoordinator: Coordinator {
         
         rootViewController.selectedIndex = 1
     }
+    
+    func childDidDisappeared(_ child: Coordinator?) {}
     
     private func initEpisodesCoordinator() {
         let childCoordinator = EpisodesCoordinator(rootViewController: rootViewController, session: session)
@@ -67,6 +73,51 @@ final class AppCoordinator: Coordinator {
         
         childCoordinator.start()
         childCoordinators[childCoordinator.identifier] = childCoordinator
+    }
+    
+}
+
+// MARK: - Error handling
+
+extension AppCoordinator {
+    
+    func showInternetConnectionAlert() {
+        if !window.subviews.filter({ $0.accessibilityIdentifier == "no_internet" }).isEmpty {
+            return
+        }
+        
+        let view = NoInternetConnectionView(
+            frame: CGRect(
+                x: 0,
+                y: window.safeAreaInsets.top,
+                width: window.bounds.width,
+                height: 44
+            )
+        )
+        
+        window.addSubview(view)
+
+        view.transform = CGAffineTransform(translationX: 0, y: -(window.safeAreaInsets.top + view.frame.height))
+        
+        UIView.animate(withDuration: 0.4, animations: {
+            view.transform = .identity
+        }) { _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                UIView.animate(withDuration: 0.4, animations: {
+                    view.transform = .identity
+                }) { _ in
+                    UIView.animate(withDuration: 0.4, animations: {
+                        view.alpha = 0
+                    }) { _ in
+                        view.removeFromSuperview()
+                    }
+                }
+            }
+        }
+    }
+    
+    func showErroAlert(with description: String) {
+        AlertService.showAlert(vc: rootViewController, title: "Server request error.", message: description)
     }
     
 }

@@ -11,7 +11,7 @@ import RxSwift
 
 protocol EpisodeServiceProtocol {
     
-    func getEpisodes(from page: Int, completionHandler: ((EpisodesResponse?) -> Void)?)
+    func getEpisodes(from page: Int, completionHandler: ((RequestResult<EpisodesResponse>) -> Void)?)
     
 }
 
@@ -24,13 +24,17 @@ final class EpisodeService: EpisodeServiceProtocol {
     
     // MARK: - Requests
     
-    func getEpisodes(from page: Int, completionHandler: ((EpisodesResponse?) -> Void)?) {
+    func getEpisodes(from page: Int, completionHandler: ((RequestResult<EpisodesResponse>) -> Void)?) {
         return apiClient.request(API.Episode.getEpisodes(from: page))
             .observeOn(MainScheduler.instance)
             .subscribe(onSuccess: { response in
-                completionHandler?(response)
+                completionHandler?(.success(response))
             }) { error in
-                completionHandler?(nil)
+                if let _ = error as? NoInternetError {
+                    completionHandler?(.noInternet)
+                } else {
+                    completionHandler?(.error)
+                }
             }.disposed(by: disposeBag)
     }
     

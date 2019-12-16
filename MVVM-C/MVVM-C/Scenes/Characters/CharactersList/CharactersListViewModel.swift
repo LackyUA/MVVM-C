@@ -48,13 +48,22 @@ final class CharactersListViewModel {
     // MARK: - Network
     
     private func fetchCharacters(from page: Int) {
-        service.getCharacters(from: page) { [weak self] response in
+        service.getCharacters(from: page) { [weak self] result in
             self?.isLoading = false
             self?.isLoadingMore = false
             
-            if let response = response {
-                self?.characters += response.characters
-                self?.info = response.info
+            switch result {
+            case .success(let response):
+                if let response = response {
+                    self?.characters += response.characters
+                    self?.info = response.info
+                }
+                
+            case .noInternet:
+                break
+                
+            case .error:
+                AppCoordinator.instance.showErroAlert(with: "Please try again later.")
             }
         }
     }

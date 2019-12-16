@@ -26,15 +26,15 @@ final class MockEpisodeService: EpisodeServiceProtocol {
     )
     
     var isGetEpisodesCalled = false
-    var completionHandler: ((EpisodesResponse?) -> Void)?
+    var completionHandler: ((RequestResult<EpisodesResponse>) -> Void)?
     
-    func getEpisodes(from page: Int, completionHandler: ((EpisodesResponse?) -> Void)?) {
+    func getEpisodes(from page: Int, completionHandler: ((RequestResult<EpisodesResponse>) -> Void)?) {
         isGetEpisodesCalled = true
         self.completionHandler = completionHandler
     }
     
     func getEpisodesFetchSuccess() {
-        completionHandler?(mockEpisodeResponse)
+        completionHandler?(.success(mockEpisodeResponse))
     }
     
 }
